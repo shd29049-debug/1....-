@@ -1,0 +1,1656 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090909">
+<meta name="description" content="صانع البهجة بإدارة عبد السلام - تجهيز الكوش والأفراح والهدايا والبرفانات والإكسسوارات.">
+<title>صانع البهجة | بإدارة عبد السلام</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#d6ad58;
+  --gold-light:#f8df9b;
+  --black:#080808;
+  --muted:#aaa;
+  --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Cairo',sans-serif;
+  background:var(--black);
+  color:var(--white);
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+button,a,input,select{font:inherit}
+button{cursor:pointer;touch-action:manipulation}
+a{color:inherit;text-decoration:none}
+img,video{max-width:100%;display:block}
+.gold{color:var(--gold)}
+.container{width:min(1150px,92%);margin:auto}
+.section{padding:75px 0}
+.section-title{text-align:center;margin-bottom:35px}
+.section-title small{color:var(--gold);letter-spacing:2px}
+.section-title h2{font-size:clamp(26px,5vw,40px);margin:8px 0}
+.section-title p{color:var(--muted);font-size:14px}
+.gold-line{width:75px;height:3px;background:var(--gold);margin:13px auto;border-radius:20px}
+.btn{
+  border:1px solid var(--gold);
+  background:linear-gradient(135deg,#f2d58d,#b98732);
+  color:#17110a;padding:12px 22px;border-radius:30px;
+  font-weight:800;display:inline-flex;align-items:center;
+  justify-content:center;gap:8px;transition:.3s;
+}
+.btn:active{transform:scale(.97)}
+.btn-outline{background:transparent;color:var(--gold)}
+.muted{color:var(--muted)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;
+}
+
+/* Loading */
+#loader{
+  position:fixed;inset:0;background:#050505;z-index:10000;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .7s,visibility .7s;
+}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-content{text-align:center}
+.loader-logo{font-size:30px;color:var(--gold);font-weight:900}
+.loader-ring{
+  width:42px;height:42px;border:2px solid #3b3020;
+  border-top-color:var(--gold);border-radius:50%;
+  margin:22px auto;animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Cinematic intro */
+#intro{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 45%,#4a3518 0%,#171006 28%,#080808 65%,#020202 100%);
+  transition:opacity 1s,visibility 1s;
+}
+#intro.done{opacity:0;visibility:hidden;pointer-events:none}
+.intro-glow{
+  position:absolute;width:260px;height:260px;border-radius:50%;
+  background:#d6ad5840;filter:blur(85px);
+  animation:pulse 3s infinite alternate;
+}
+@keyframes pulse{to{transform:scale(1.8);opacity:.4}}
+.intro-stars{
+  position:absolute;inset:0;
+  background-image:radial-gradient(#f8df9b 1px,transparent 1px);
+  background-size:65px 65px;opacity:.22;
+  animation:stars 18s linear infinite;
+}
+@keyframes stars{to{background-position:130px 130px}}
+.intro-content{position:relative;z-index:2;padding:20px}
+.intro-kicker{color:var(--gold);letter-spacing:4px;font-size:12px}
+.intro-title{
+  font-size:clamp(40px,10vw,76px);font-weight:900;
+  margin:15px 0;color:transparent;
+  background:linear-gradient(90deg,#8d6429,#ffe6a0,#b98732,#fff0bc);
+  background-size:250%;background-clip:text;
+  -webkit-background-clip:text;animation:shine 4s linear infinite;
+}
+@keyframes shine{to{background-position:250%}}
+.intro-sub{color:#ddd;margin-bottom:27px}
+.skip-intro{
+  position:absolute;bottom:25px;left:25px;
+  background:transparent;color:#aaa;border:0;font-size:13px;
+}
+.developer-intro{
+  color:#d7bd82;font-size:12px;margin-top:24px;
+  letter-spacing:1px;opacity:.9;
+}
+
+/* Header */
+header{
+  position:sticky;top:0;z-index:100;
+  background:#090909f2;border-bottom:1px solid #d6ad5830;
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{font-size:21px;font-weight:900;color:var(--gold)}
+.brand span{display:block;font-size:10px;color:#aaa;font-weight:400}
+.nav-links{display:flex;align-items:center;gap:18px}
+.nav-links a{font-size:13px;color:#ddd;transition:.2s}
+.nav-links a:active{color:var(--gold)}
+.menu-toggle{
+  display:none;background:none;color:var(--gold);
+  border:1px solid #d6ad5860;border-radius:10px;padding:7px 12px;
+}
+
+/* Hero */
+.hero{
+  min-height:590px;display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  background:
+  linear-gradient(90deg,#050505e8,#05050565),
+  url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85') center/cover;
+}
+.hero:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,#080808 0%,transparent 35%,#08080855 100%);
+}
+.hero-content{position:relative;z-index:2;max-width:700px;padding:75px 0}
+.hero-tag{color:var(--gold);font-size:14px}
+.hero h1{font-size:clamp(36px,7vw,66px);line-height:1.4;margin:13px 0}
+.hero p{color:#ddd;line-height:2;max-width:570px;margin-bottom:25px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stamp{
+  display:inline-block;margin-top:28px;padding:9px 17px;
+  border:1px solid #d6ad5860;border-radius:30px;color:#e7c77f;font-size:12px;
+}
+
+/* Categories */
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.category-card{
+  border:1px solid #d6ad5840;border-radius:18px;
+  background:linear-gradient(145deg,#1c1a16,#101010);
+  padding:27px 15px;text-align:center;transition:.3s;
+  cursor:pointer;min-height:170px;
+}
+.category-card:active{transform:scale(.97);border-color:var(--gold)}
+.category-icon{font-size:38px;display:block;margin-bottom:10px}
+.category-card h3{font-size:17px;color:var(--gold)}
+.category-card p{font-size:12px;color:#aaa;margin-top:5px}
+
+/* Cinematic category pages */
+.view-panel{display:none}
+.view-panel.active{display:block;animation:panelEnter .65s ease both}
+@keyframes panelEnter{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+#panelView{
+  width:100%;max-width:none;padding:0 0 70px;
+  position:relative;isolation:isolate;min-height:75vh;
+}
+#panelView:before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background-position:center;background-size:cover;
+  background-attachment:fixed;opacity:.34;
+}
+#panelView:after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,#080808c9,#080808ed 75%,#080808);
+}
+#panelView.bg-kosha:before{
+  background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85');
+}
+#panelView.bg-perfumes:before{
+  background-image:url('https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1800&q=85');
+}
+#panelView.bg-gifts:before{
+  background-image:url('https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=1800&q=85');
+}
+#panelView.bg-accessories:before{
+  background-image:url('https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1800&q=85');
+}
+.back-row{margin-bottom:25px;padding-top:25px}
+.back-btn{
+  background:#111c;color:var(--gold);border:1px solid #d6ad5860;
+  border-radius:25px;padding:9px 17px;
+}
+.panel-heading{text-align:center;margin:15px 0 30px}
+.panel-heading h2{font-size:30px;color:var(--gold)}
+.panel-heading p{color:#ddd;font-size:13px;margin-top:7px}
+
+/* Moving image galleries */
+.gallery-window{
+  overflow:hidden;border-radius:18px;
+  border:1px solid #d6ad5860;
+  background:#080808c9;padding:12px 0;
+  direction:ltr;touch-action:pan-y;
+}
+.gallery-track{
+  display:flex;gap:14px;width:max-content;
+  animation:marquee 45s linear infinite;
+  will-change:transform;
+}
+.gallery-track.reverse{animation-direction:reverse}
+.gallery-window.paused .gallery-track{animation-play-state:paused}
+@keyframes marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.gallery-card{
+  width:280px;height:210px;flex:none;
+  border-radius:13px;overflow:hidden;position:relative;
+  cursor:pointer;background:#222;
+}
+.gallery-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gallery-card:after{
+  content:"اضغط للمشاهدة";position:absolute;bottom:0;right:0;left:0;
+  padding:25px 12px 10px;text-align:center;font-size:12px;
+  background:linear-gradient(transparent,#000c);pointer-events:none;
+}
+.gallery-note{text-align:center;color:#ddd;font-size:12px;margin:14px 0}
+
+/* Video previews */
+.video-card{
+  width:280px;height:210px;flex:none;position:relative;
+  overflow:hidden;border-radius:13px;background:#171717;
+  cursor:pointer;border:1px solid #d6ad5850;
+}
+.video-card video{
+  width:100%;height:100%;object-fit:cover;pointer-events:none;
+}
+.video-card .play-mark{
+  position:absolute;inset:0;display:grid;place-items:center;
+  background:#0004;font-size:45px;text-shadow:0 2px 12px #000;
+  pointer-events:none;
+}
+.video-card .video-label{
+  position:absolute;bottom:0;right:0;left:0;text-align:center;
+  padding:20px 8px 8px;font-size:12px;
+  background:linear-gradient(transparent,#000d);pointer-events:none;
+}
+
+/* Products */
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.product-card{
+  border:1px solid #d6ad5850;border-radius:17px;overflow:hidden;
+  background:#101010ef;transition:.3s;
+}
+.product-card img{width:100%;height:220px;object-fit:cover}
+.product-info{padding:15px}
+.product-info h3{color:var(--gold);font-size:17px}
+.product-info p{color:#bbb;font-size:12px;margin-top:5px;line-height:1.8}
+.product-info .btn{width:100%;margin-top:12px}
+
+/* Surprise */
+.surprise-box{
+  max-width:700px;margin:25px auto 0;padding:30px 20px;
+  text-align:center;border:1px solid #d6ad5860;border-radius:22px;
+  background:radial-gradient(circle at top,#392a13,#111 65%);
+}
+.gift-emoji{font-size:65px;display:block;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translateY(-9px) rotate(4deg)}}
+.surprise-message{display:none;margin-top:17px;color:#f6dda0;line-height:2}
+.surprise-message.show{display:block;animation:panelEnter .7s}
+
+/* Info and occasions */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.info-card{padding:23px;border:1px solid #d6ad5835;border-radius:16px;background:#121212}
+.info-card .symbol{font-size:30px}
+.info-card h3{color:var(--gold);margin:8px 0}
+.info-card p{color:#aaa;font-size:13px;line-height:1.9}
+.occasion-box{
+  padding:25px;border:1px solid #d6ad5850;border-radius:20px;
+  background:#121212;text-align:center;
+}
+.occasion-options{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0}
+.occasion-options button{
+  padding:10px 17px;border:1px solid #d6ad5860;
+  border-radius:25px;background:#1a1a1a;color:#eee;
+}
+.occasion-options button.selected{background:var(--gold);color:#111}
+#occasionResult{color:#e9cf91;line-height:2;margin:12px 0}
+
+/* New idea: greeting card maker */
+.card-maker{
+  max-width:780px;margin:auto;padding:25px;
+  border:1px solid #d6ad5870;border-radius:22px;
+  background:
+    radial-gradient(circle at top left,#5b421d55,transparent 45%),
+    linear-gradient(145deg,#17130c,#080808);
+  box-shadow:0 15px 55px #0008;
+}
+.card-maker label{display:block;color:var(--gold);font-size:13px;margin:12px 0 6px}
+.card-maker input,.card-maker select{
+  width:100%;padding:13px 14px;border-radius:12px;
+  border:1px solid #d6ad5850;background:#0b0b0b;
+  color:white;outline:none;
+}
+.card-maker input::placeholder{color:#777}
+.generated-card{
+  display:none;margin-top:22px;padding:30px 18px;
+  border:1px solid #e2c477;border-radius:18px;
+  text-align:center;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 0%,#6e512755,transparent 60%),
+    linear-gradient(145deg,#211a0e,#090909);
+}
+.generated-card.show{display:block;animation:panelEnter .6s}
+.generated-card:before,.generated-card:after{
+  content:"✦";position:absolute;color:#d6ad58;font-size:25px;opacity:.6;
+}
+.generated-card:before{top:12px;right:15px}
+.generated-card:after{bottom:12px;left:15px}
+.generated-card .card-emoji{font-size:42px;margin-bottom:12px}
+.generated-card h3{font-size:25px;color:#f4d78e}
+.generated-card p{color:#eee;line-height:2;margin:12px auto;max-width:500px}
+.generated-card small{color:#c9a85f}
+.card-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:15px}
+
+/* Tour */
+.tour-box{border:1px solid #d6ad5860;border-radius:20px;padding:28px;text-align:center;background:#15120d}
+.tour-step{color:var(--gold);font-size:12px}
+.tour-box h3{font-size:24px;margin:10px}
+.tour-box p{color:#bbb;font-size:14px;line-height:2}
+.tour-actions{display:flex;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap}
+
+/* Reviews / FAQ */
+.review-placeholder{text-align:center;padding:30px;border:1px dashed #d6ad5860;border-radius:16px;color:#aaa;line-height:2}
+details{background:#141414;border:1px solid #d6ad5830;border-radius:12px;padding:15px 18px;margin:10px 0}
+summary{cursor:pointer;color:var(--gold);font-weight:700}
+details p{color:#bbb;font-size:13px;line-height:2;margin-top:10px}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.contact-link{
+  display:flex;align-items:center;gap:14px;
+  padding:18px;border:1px solid #d6ad5840;
+  background:#141414;border-radius:15px;transition:.3s;
+  color:white;text-align:right;width:100%;
+}
+.contact-icon{font-size:28px}
+.contact-link strong{display:block;color:var(--gold)}
+.contact-link small{color:#aaa;font-size:12px}
+
+/* Footer */
+footer{border-top:1px solid #d6ad5830;padding:35px 0;text-align:center;background:#080808}
+footer .brand{font-size:25px}
+footer p{color:#888;font-size:12px;margin:10px 0}
+.socials{display:flex;justify-content:center;gap:12px;margin:18px 0}
+.socials a{
+  width:42px;height:42px;border:1px solid #d6ad5860;
+  border-radius:50%;display:grid;place-items:center;color:var(--gold);font-weight:800;
+}
+.developer-credit{
+  margin:22px auto 0;padding-top:15px;border-top:1px solid #d6ad5825;
+  color:#d6ad58;font-size:12px;letter-spacing:.5px;
+}
+
+/* Floating actions */
+.floating-actions{
+  position:fixed;left:12px;bottom:calc(15px + env(safe-area-inset-bottom));
+  z-index:500;display:flex;flex-direction:column;gap:9px;
+}
+.float-btn{
+  border:0;border-radius:30px;padding:11px 15px;
+  background:#d6ad58;color:#17110a;font-weight:800;
+  box-shadow:0 5px 20px #0008;font-size:12px;
+}
+.float-btn.dark{background:#171717;color:var(--gold);border:1px solid var(--gold)}
+#topBtn{
+  display:none;position:fixed;right:16px;bottom:calc(20px + env(safe-area-inset-bottom));
+  z-index:500;width:43px;height:43px;border-radius:50%;
+  border:1px solid var(--gold);background:#151515;color:var(--gold);font-size:20px;
+}
+
+/* Image / video lightboxes */
+#lightbox,#videoLightbox{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:#000f;align-items:center;justify-content:center;padding:18px;
+}
+#lightbox.show,#videoLightbox.show{display:flex}
+#lightbox img{max-width:95%;max-height:85vh;border-radius:12px;object-fit:contain}
+#videoLightbox video{
+  width:min(950px,95vw);max-height:78vh;
+  background:#000;border-radius:12px;
+}
+.close-modal{
+  position:absolute;top:calc(15px + env(safe-area-inset-top));left:18px;
+  border:0;background:#222;color:white;font-size:25px;
+  border-radius:50%;width:44px;height:44px;z-index:3;
+}
+
+/* Quran player */
+.quran-player{
+  position:fixed;right:12px;bottom:calc(15px + env(safe-area-inset-bottom));
+  z-index:490;background:#15120d;border:1px solid #d6ad5860;
+  border-radius:16px;padding:11px 13px;width:min(290px,73vw);
+  box-shadow:0 5px 25px #0009;
+}
+.quran-player strong{display:block;color:var(--gold);font-size:13px}
+.quran-player small{display:block;color:#aaa;font-size:10px;margin:3px 0 8px}
+.quran-controls{display:flex;align-items:center;gap:8px}
+.quran-controls button{
+  border:1px solid #d6ad5870;border-radius:20px;
+  background:#d6ad58;color:#17110a;font-weight:800;
+  padding:7px 13px;font-size:12px;
+}
+.quran-controls button.secondary{background:#171717;color:var(--gold)}
+#quranStatus{font-size:10px;color:#c9b47e;flex:1;text-align:center}
+.quran-progress{
+  width:100%;height:3px;background:#45381f;border-radius:10px;
+  margin-top:9px;overflow:hidden;
+}
+#quranProgressFill{height:100%;width:0;background:var(--gold);transition:width .3s}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:.7s}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:800px){
+  .nav-links{
+    display:none;position:absolute;top:72px;right:0;left:0;
+    background:#0d0d0d;padding:20px;flex-direction:column;
+    border-bottom:1px solid #d6ad5840;
+  }
+  .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+  .category-grid{grid-template-columns:repeat(2,1fr)}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .info-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-card,.video-card{width:235px;height:180px}
+  .hero{min-height:520px}
+}
+@media(max-width:520px){
+  .section{padding:55px 0}
+  .hero{min-height:490px}
+  .hero-content{padding:55px 0}
+  .product-grid,.info-grid,.contact-grid{grid-template-columns:1fr}
+  .product-card img{height:230px}
+  .category-card{min-height:145px;padding:20px 10px}
+  .category-icon{font-size:32px}
+  .floating-actions{left:9px;bottom:calc(12px + env(safe-area-inset-bottom))}
+  .float-btn{font-size:11px;padding:9px 12px}
+  #topBtn{bottom:calc(75px + env(safe-area-inset-bottom))}
+  .quran-player{
+    right:9px;bottom:calc(12px + env(safe-area-inset-bottom));
+    width:205px;padding:9px 10px;
+  }
+  .quran-player strong{font-size:11px}
+  .quran-player small{font-size:9px}
+  .quran-controls button{padding:6px 9px;font-size:10px}
+  #quranStatus{font-size:9px}
+  .card-maker{padding:18px}
+  .generated-card{padding:25px 12px}
+  .generated-card h3{font-size:21px}
+  #panelView:before{background-attachment:scroll}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Loading -->
+<div id="loader">
+  <div class="loader-content">
+    <div class="loader-logo">صانع البهجة</div>
+    <div class="loader-ring"></div>
+    <small class="muted">بنجهزلك تجربة مختلفة...</small>
+  </div>
+</div>
+
+<!-- Intro -->
+<div id="intro">
+  <div class="intro-stars"></div>
+  <div class="intro-glow"></div>
+  <div class="intro-content">
+    <div class="intro-kicker">WELCOME TO</div>
+    <div class="intro-title">صانع البهجة</div>
+    <p class="intro-sub">كل لحظة جميلة تستحق لمسة استثنائية</p>
+    <button class="btn" onclick="enterSite()">ادخل عالم صانع البهجة ✨</button>
+    <div class="developer-intro">Designed &amp; Developed by Eng. Ahmed Wael</div>
+  </div>
+  <button class="skip-intro" onclick="enterSite()">تخطي المقدمة</button>
+</div>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="brand" onclick="showHome();return false">
+      صانع البهجة
+      <span>بإدارة عبد السلام</span>
+    </a>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="فتح القائمة">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" onclick="showHome()">الرئيسية</a>
+      <a href="#categories" onclick="showHome()">الأقسام</a>
+      <a href="#cardMaker" onclick="showHome()">اصنع كارتك</a>
+      <a href="#occasions" onclick="showHome()">اختار مناسبتك</a>
+      <a href="#about" onclick="showHome()">من نحن</a>
+      <a href="#contact" onclick="showHome()">تواصل معنا</a>
+    </nav>
+  </div>
+</header>
+
+<main id="homeView">
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <span class="hero-tag">✨ أهلاً بيكم في صانع البهجة</span>
+      <h1>بنصنع لحظات<br><span class="gold">تفضل في الذاكرة</span></h1>
+      <p>
+        من تجهيز الكوش والأفراح، للهدايا والبوكسات،
+        للبرفانات والإكسسوارات... بنهتم بالتفاصيل اللي بتصنع البهجة.
+      </p>
+      <div class="hero-actions">
+        <button class="btn" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">اكتشف أقسامنا</button>
+        <a class="btn btn-outline" href="https://wa.me/201013918098" target="_blank" rel="noopener">اطلب على واتساب</a>
+      </div>
+      <div class="hero-stamp">صانع البهجة – بإدارة عبد السلام</div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section container" id="categories">
+    <div class="section-title reveal">
+      <small>EXPLORE OUR WORLD</small>
+      <h2>اكتشف <span class="gold">أقسامنا</span></h2>
+      <div class="gold-line"></div>
+      <p>اختار القسم اللي حابب تشوفه</p>
+    </div>
+    <div class="category-grid">
+      <div class="category-card reveal" role="button" tabindex="0" onclick="openPanel('kosha')" onkeydown="cardKey(event,'kosha')">
+        <span class="category-icon">💍</span>
+        <h3>الكوش والأفراح</h3><p>تفاصيل تليق بيومك</p>
+      </div>
+      <div class="category-card reveal" role="button" tabindex="0" onclick="openPanel('perfumes')" onkeydown="cardKey(event,'perfumes')">
+        <span class="category-icon">🌹</span>
+        <h3>البرفانات</h3><p>اختيارات بروائح مميزة</p>
+      </div>
+      <div class="category-card reveal" role="button" tabindex="0" onclick="openPanel('gifts')" onkeydown="cardKey(event,'gifts')">
+        <span class="category-icon">🎁</span>
+        <h3>الهدايا والبوكسات</h3><p>هدايا بتفرّح من القلب</p>
+      </div>
+      <div class="category-card reveal" role="button" tabindex="0" onclick="openPanel('accessories')" onkeydown="cardKey(event,'accessories')">
+        <span class="category-icon">💎</span>
+        <h3>الإكسسوارات</h3><p>لمسات تكمل أناقتك</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Surprise -->
+  <section class="section container">
+    <div class="section-title reveal">
+      <small>A LITTLE SURPRISE</small>
+      <h2>عندنا ليك <span class="gold">مفاجأة</span></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="surprise-box reveal">
+      <span class="gift-emoji" id="giftEmoji">🎁</span>
+      <h3 class="gold">افتح مفاجأتك</h3>
+      <p class="muted">اضغط على الصندوق واكتشف رسالتنا ليك</p>
+      <button class="btn" style="margin-top:17px" onclick="openSurprise()">افتح الهدية</button>
+      <div class="surprise-message" id="surpriseMessage">
+        <h3>أهلاً بيك في صانع البهجة ❤️</h3>
+        <p>وجودك عندنا يسعدنا، ونتمنى نكون جزء من أجمل لحظاتك.</p>
+        <p>اختار اللي يعجبك وسيب علينا مهمة التفاصيل!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="section container">
+    <div class="section-title reveal">
+      <small>OUR HIGHLIGHTS</small>
+      <h2>لحظات صُنعت <span class="gold">للبهجة</span></h2>
+      <div class="gold-line"></div>
+      <p>لقطات من عالم صانع البهجة</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-card reveal"><div class="symbol">✨</div><h3>تفاصيل تصنع الفرق</h3><p>كل تفصيلة صغيرة ممكن تحول المناسبة لذكرى كبيرة.</p></div>
+      <div class="info-card reveal"><div class="symbol">💐</div><h3>أجمل تجهيزات الأفراح</h3><p>شوف صور وفيديوهات تجهيزات الكوش في قسم الأفراح.</p></div>
+      <div class="info-card reveal"><div class="symbol">🎁</div><h3>هدايا بتفرّح من القلب</h3><p>اكتشف أفكار الهدايا والبوكسات في قسم الهدايا.</p></div>
+    </div>
+  </section>
+
+  <!-- New feature: make your greeting card -->
+  <section class="section container" id="cardMaker">
+    <div class="section-title reveal">
+      <small>CREATE YOUR MOMENT</small>
+      <h2>اصنع كارت <span class="gold">بهجتك</span></h2>
+      <div class="gold-line"></div>
+      <p>اكتب الاسم واختار المناسبة، وخلي الموقع يصنعلك كارت تهنئة مميز</p>
+    </div>
+    <div class="card-maker reveal">
+      <label for="cardName">اسم الشخص</label>
+      <input id="cardName" type="text" maxlength="35" placeholder="اكتب الاسم هنا...">
+      <label for="cardOccasion">اختار المناسبة</label>
+      <select id="cardOccasion">
+        <option value="عيد ميلاد سعيد">🎂 عيد ميلاد</option>
+        <option value="ألف مبروك الخطوبة">💍 خطوبة</option>
+        <option value="ألف مبروك الزواج">💐 زواج</option>
+        <option value="كل سنة وأنت طيب">🌙 مناسبة سعيدة</option>
+        <option value="هدية من القلب">🎁 إهداء خاص</option>
+      </select>
+      <button class="btn" style="width:100%;margin-top:18px" onclick="makeGreetingCard()">اصنع كارت البهجة ✨</button>
+
+      <div class="generated-card" id="generatedCard">
+        <div class="card-emoji" id="cardEmoji">🎉</div>
+        <h3 id="cardTitle">عيد ميلاد سعيد</h3>
+        <p id="cardMessage"></p>
+        <small>من صانع البهجة ❤️</small>
+      </div>
+      <div class="card-actions" id="cardActions" style="display:none">
+        <button class="btn" onclick="shareGreetingCard()">شارك الكارت</button>
+        <button class="btn btn-outline" onclick="copyGreetingCard()">انسخ التهنئة</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Occasion chooser -->
+  <section class="section container" id="occasions">
+    <div class="section-title reveal">
+      <small>FIND YOUR IDEA</small>
+      <h2>اختار <span class="gold">مناسبتك</span></h2>
+      <div class="gold-line"></div>
+      <p>اختار المناسبة وشوف القسم اللي ممكن يساعدك</p>
+    </div>
+    <div class="occasion-box reveal">
+      <h3>مناسبتك إيه؟</h3>
+      <div class="occasion-options">
+        <button onclick="chooseOccasion(this,'wedding')">💍 فرح أو خطوبة</button>
+        <button onclick="chooseOccasion(this,'birthday')">🎂 عيد ميلاد</button>
+        <button onclick="chooseOccasion(this,'gift')">🎁 عايز هدية</button>
+        <button onclick="chooseOccasion(this,'personal')">🌹 استخدام شخصي</button>
+      </div>
+      <div id="occasionResult">اختار مناسبة من الاختيارات اللي فوق.</div>
+      <button class="btn btn-outline" id="occasionGo" style="display:none" onclick="goOccasion()">شوف القسم المناسب</button>
+    </div>
+  </section>
+
+  <!-- Tour -->
+  <section class="section container">
+    <div class="section-title reveal">
+      <small>TAKE A TOUR</small>
+      <h2>خد لفة في <span class="gold">صانع البهجة</span></h2>
+      <div class="gold-line"></div>
+      <p>جولة سريعة تعرفك على أقسامنا</p>
+    </div>
+    <div class="tour-box reveal">
+      <div class="tour-step" id="tourStep">جولة تعريفية</div>
+      <h3 id="tourTitle">جاهز تاخد لفة؟</h3>
+      <p id="tourText">هنعرفك على أقسام صانع البهجة في خطوات بسيطة.</p>
+      <div class="tour-actions">
+        <button class="btn" id="tourNext" onclick="nextTour()">ابدأ الجولة ✨</button>
+        <button class="btn btn-outline" onclick="endTour()">تخطي الجولة</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section container" id="about">
+    <div class="section-title reveal">
+      <small>ABOUT US</small>
+      <h2>حكاية <span class="gold">صانع البهجة</span></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="info-card reveal" style="text-align:center">
+      <h3 style="font-size:23px">صانع البهجة – بإدارة عبد السلام</h3>
+      <p style="font-size:15px">
+        متخصصون في تجهيز الكوش والأفراح والمناسبات،
+        وتقديم الهدايا والبوكسات والإكسسوارات والبرفانات،
+        لنشارككم أجمل لحظاتكم ونساعدكم تختاروا التفاصيل اللي تناسب مناسباتكم.
+      </p>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section container">
+    <div class="section-title reveal">
+      <small>CLIENT EXPERIENCES</small>
+      <h2>آراء <span class="gold">عملائنا</span></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="review-placeholder reveal">
+      <div style="font-size:35px">💬</div>
+      <h3 class="gold">رأيكم يهمنا</h3>
+      <p>هنعرض هنا تجارب وآراء عملائنا الحقيقية بعد إضافتها بموافقتهم.</p>
+      <a class="btn" style="margin-top:15px" href="https://wa.me/201013918098?text=%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B4%D8%A7%D8%B1%D9%83%20%D8%B1%D8%A3%D9%8A%D9%8A%20%D9%85%D8%B9%D8%A7%D9%83%D9%85" target="_blank" rel="noopener">شاركنا رأيك</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section container">
+    <div class="section-title reveal">
+      <small>FAQ</small>
+      <h2>أسئلة <span class="gold">بتتكرر</span></h2>
+      <div class="gold-line"></div>
+    </div>
+    <details><summary>إزاي أستفسر عن تجهيز كوشة أو مناسبة؟</summary><p>تقدر تتواصل مع المحل مباشرة على واتساب وتبعت تفاصيل المناسبة والطلبات اللي محتاجها.</p></details>
+    <details><summary>إزاي أعرف الأسعار والتوافر؟</summary><p>الأسعار والتوافر بتتحدد حسب المنتج أو تفاصيل الطلب. تواصل مع المحل للتأكد من التفاصيل.</p></details>
+    <details><summary>إزاي أطلب هدية أو بوكس بتصميم خاص؟</summary><p>اضغط على زر اطلب تصميم خاص، واكتب فكرتك وتفاصيل الهدية على واتساب.</p></details>
+    <details><summary>إزاي أوصل للمحل؟</summary><p>اضغط على زر مكاننا أو مشاركة الموقع لفتح موقع المحل على خرائط Google.</p></details>
+  </section>
+
+  <!-- Contact -->
+  <section class="section container" id="contact">
+    <div class="section-title reveal">
+      <small>GET IN TOUCH</small>
+      <h2>تواصل <span class="gold">معانا</span></h2>
+      <div class="gold-line"></div>
+      <p>يسعدنا تواصلك واستفسارك</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-link reveal" href="https://wa.me/201013918098" target="_blank" rel="noopener">
+        <span class="contact-icon">💬</span><span><strong>واتساب المحل</strong><small>راسلنا مباشرة</small></span>
+      </a>
+      <a class="contact-link reveal" href="tel:+201013918098">
+        <span class="contact-icon">📞</span><span><strong>اتصل بنا</strong><small>مكالمة مباشرة</small></span>
+      </a>
+      <a class="contact-link reveal" href="https://maps.app.goo.gl/tGQ2w8oJ1gVLarTo8?g_st=ac" target="_blank" rel="noopener">
+        <span class="contact-icon">📍</span><span><strong>مكاننا على الخريطة</strong><small>افتح Google Maps</small></span>
+      </a>
+      <button class="contact-link reveal" onclick="shareLocation()">
+        <span class="contact-icon">📤</span><span><strong>شارك موقع المحل</strong><small>ابعته لأصحابك</small></span>
+      </button>
+      <a class="contact-link reveal" href="https://www.instagram.com/abdonagy152/" target="_blank" rel="noopener">
+        <span class="contact-icon">📸</span><span><strong>Instagram</strong><small>@abdonagy152</small></span>
+      </a>
+      <a class="contact-link reveal" href="https://www.tiktok.com/@abdo_nagy4" target="_blank" rel="noopener">
+        <span class="contact-icon">🎵</span><span><strong>TikTok</strong><small>@abdo_nagy4</small></span>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:25px">
+      <a class="btn" href="https://wa.me/201013918098?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%B5%D8%A7%D9%86%D8%B9%20%D8%A7%D9%84%D8%A8%D9%87%D8%AC%D8%A9%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%B7%D9%84%D8%A8." target="_blank" rel="noopener">اطلب بهجتك الآن ✨</a>
+      <a class="btn btn-outline" style="margin-right:7px" href="https://wa.me/201013918098?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%AE%D8%A7%D8%B5." target="_blank" rel="noopener">اطلب تصميم خاص</a>
+    </div>
+  </section>
+</main>
+
+<!-- Category pages -->
+<main id="panelView" class="container section view-panel">
+  <div class="back-row container">
+    <button class="back-btn" onclick="showHome()">← الرجوع للرئيسية</button>
+  </div>
+
+  <!-- Kosha -->
+  <section id="kosha" class="view-panel">
+    <div class="container">
+      <div class="panel-heading">
+        <h2>💍 الكوش والأفراح</h2>
+        <p>تفاصيل تليق بأجمل يوم في حياتك</p>
+      </div>
+      <div class="gallery-window" id="koshaWindow">
+        <div class="gallery-track" id="koshaGallery"></div>
+      </div>
+      <p class="gallery-note">الصور بتتحرك تلقائيًا – اضغط على أي صورة لمشاهدتها بحجم أكبر</p>
+
+      <div class="gallery-window" id="videoWindow" style="margin-top:22px">
+        <div class="gallery-track reverse" id="videoGallery"></div>
+      </div>
+      <p class="gallery-note">معاينات فيديو متحركة من أعمال وتجهيزات المحل – اضغط على الفيديو لتشغيله</p>
+
+      <div style="text-align:center;margin-top:25px">
+        <a class="btn" href="https://wa.me/201013918098?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%83%D9%88%D8%B4%D8%A9." target="_blank" rel="noopener">استفسر عن تجهيز كوشة</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perfumes -->
+  <section id="perfumes" class="view-panel">
+    <div class="container">
+      <div class="panel-heading">
+        <h2>🌹 عالم البرفانات</h2>
+        <p>اختيارات بروائح وأسماء متنوعة</p>
+      </div>
+      <div class="product-grid" id="perfumeGrid"></div>
+      <p class="gallery-note">الصور توضيحية، اسأل المحل عن الأنواع المتاحة.</p>
+    </div>
+  </section>
+
+  <!-- Gifts -->
+  <section id="gifts" class="view-panel">
+    <div class="container">
+      <div class="panel-heading">
+        <h2>🎁 الهدايا والبوكسات</h2>
+        <p>أفكار هدايا وتغليف يفرّح اللي بتحبه</p>
+      </div>
+      <div class="gallery-window" id="giftWindow">
+        <div class="gallery-track" id="giftGallery"></div>
+      </div>
+      <p class="gallery-note">صور توضيحية لأفكار الهدايا والبوكسات</p>
+      <div style="text-align:center;margin-top:25px">
+        <a class="btn" href="https://wa.me/201013918098?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%87%D8%AF%D8%A7%D9%8A%D8%A7%20%D9%88%D8%A7%D9%84%D8%A8%D9%88%D9%83%D8%B3%D8%A7%D8%AA." target="_blank" rel="noopener">اطلب هديتك</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accessories -->
+  <section id="accessories" class="view-panel">
+    <div class="container">
+      <div class="panel-heading">
+        <h2>💎 الإكسسوارات</h2>
+        <p>لمسات صغيرة تكمل أناقتك</p>
+      </div>
+      <div class="gallery-window" id="accessoryWindow">
+        <div class="gallery-track" id="accessoryGallery"></div>
+      </div>
+      <p class="gallery-note">صور توضيحية للإكسسوارات – اسأل عن المتاح بالمحل.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="brand">صانع البهجة</div>
+    <p>بإدارة عبد السلام</p>
+    <div class="socials">
+      <a href="https://www.instagram.com/abdonagy152/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+      <a href="https://www.tiktok.com/@abdo_nagy4" target="_blank" rel="noopener" aria-label="TikTok">♪</a>
+      <a href="https://wa.me/201013918098" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+      <a href="https://maps.app.goo.gl/tGQ2w8oJ1gVLarTo8?g_st=ac" target="_blank" rel="noopener" aria-label="Maps">📍</a>
+    </div>
+    <p>كل لحظة جميلة تستحق لمسة من البهجة ✨</p>
+    <p>© <span id="year"></span> صانع البهجة – جميع الحقوق محفوظة</p>
+    <div class="developer-credit">Designed &amp; Developed by Eng. Ahmed Wael</div>
+  </div>
+</footer>
+
+<!-- Floating actions -->
+<div class="floating-actions">
+  <a class="float-btn" href="https://wa.me/201013918098" target="_blank" rel="noopener">💬 اطلب بهجتك</a>
+  <button class="float-btn dark" onclick="shareLocation()">📍 شارك موقعنا</button>
+</div>
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="العودة للأعلى">↑</button>
+
+<!-- Quran player -->
+<div class="quran-player">
+  <strong>📖 القرآن الكريم – مشاري العفاسي</strong>
+  <small>يبدأ من سورة النجم: الآية 39</small>
+  <div class="quran-controls">
+    <button id="quranPlay" onclick="toggleQuran()">▶ تشغيل</button>
+    <button class="secondary" onclick="stopQuran()">■ إيقاف</button>
+    <span id="quranStatus">جاهز للاستماع</span>
+  </div>
+  <div class="quran-progress"><div id="quranProgressFill"></div></div>
+</div>
+
+<!-- Two audio elements for preloading next ayah -->
+<audio id="quranAudioA" preload="auto"></audio>
+<audio id="quranAudioB" preload="auto"></audio>
+
+<!-- Image lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button class="close-modal" onclick="closeLightbox()" aria-label="إغلاق">×</button>
+  <img id="lightboxImage" src="" alt="صورة مكبرة">
+</div>
+
+<!-- Video lightbox -->
+<div id="videoLightbox" onclick="closeVideoLightbox()">
+  <button class="close-modal" onclick="closeVideoLightbox()" aria-label="إغلاق">×</button>
+  <video id="bigVideo" controls playsinline webkit-playsinline preload="metadata"></video>
+</div>
+
+<script>
+/* Main links */
+const WHATSAPP = "https://wa.me/201013918098";
+const MAP_LINK = "https://maps.app.goo.gl/tGQ2w8oJ1gVLarTo8?g_st=ac";
+
+/* User-provided wedding photos */
+const koshaImages = [
+  "https://files.catbox.moe/mw4ths.jpg",
+  "https://files.catbox.moe/meg0ap.jpg",
+  "https://files.catbox.moe/4elbsr.jpg",
+  "https://files.catbox.moe/6zodvc.jpg",
+  "https://files.catbox.moe/mr6zej.jpg",
+  "https://files.catbox.moe/uehjar.jpg",
+  "https://files.catbox.moe/2ln6tx.jpg"
+];
+
+/* User-provided videos */
+const workVideos = [
+  "https://files.catbox.moe/299tqc.mp4",
+  "https://files.catbox.moe/k8f48u.mp4",
+  "https://files.catbox.moe/ezhu7z.mp4"
+];
+
+/* Gift illustrative images */
+const giftImages = [
+  "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=800&q=85",
+  "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=85",
+  "https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=800&q=85",
+  "https://images.unsplash.com/photo-1513883049090-d0b7439799bf?auto=format&fit=crop&w=800&q=85",
+  "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=85"
+];
+
+/* Accessories illustrative images */
+const accessoryImages = [
+  "https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=800&q=85",
+  "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=85",
+  "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=85",
+  "https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=800&q=85",
+  "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=800&q=85"
+];
+
+/* Perfume display examples */
+const perfumes = [
+  {
+    name:"Dior Sauvage",
+    desc:"عطر رجالي معروف بطابعه المنعش.",
+    image:"https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Bleu de Chanel",
+    desc:"اسم من الأسماء المعروفة في عالم العطور.",
+    image:"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"YSL Y",
+    desc:"اختيار عطري بطابع عصري.",
+    image:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Versace Eros",
+    desc:"عطر يحمل طابعًا مميزًا.",
+    image:"https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"1 Million",
+    desc:"من الأسماء الشهيرة في العطور.",
+    image:"https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=800&q=85"
+  },
+  {
+    name:"Baccarat Rouge 540",
+    desc:"اسم مشهور في عالم العطور الفاخرة.",
+    image:"https://images.unsplash.com/photo-1590156221515-6f7e6b6c7f9c?auto=format&fit=crop&w=800&q=85"
+  }
+];
+
+/* Create moving image galleries */
+function galleryCard(src,alt){
+  const card=document.createElement("div");
+  card.className="gallery-card";
+  card.setAttribute("role","button");
+  card.setAttribute("tabindex","0");
+  card.setAttribute("aria-label","عرض الصورة");
+
+  const img=document.createElement("img");
+  img.src=src;
+  img.alt=alt;
+  img.loading="lazy";
+  img.decoding="async";
+
+  card.appendChild(img);
+  card.addEventListener("click",()=>openLightbox(src));
+  card.addEventListener("keydown",e=>{
+    if(e.key==="Enter" || e.key===" "){
+      e.preventDefault();
+      openLightbox(src);
+    }
+  });
+  return card;
+}
+
+function fillGallery(id,images,label){
+  const track=document.getElementById(id);
+  if(!track)return;
+  track.innerHTML="";
+  [...images,...images].forEach(src=>{
+    track.appendChild(galleryCard(src,label));
+  });
+}
+
+fillGallery("koshaGallery",koshaImages,"تجهيزات الكوش والأفراح");
+fillGallery("giftGallery",giftImages,"أفكار هدايا");
+fillGallery("accessoryGallery",accessoryImages,"إكسسوارات");
+
+/* Pause a moving gallery briefly when touched */
+document.querySelectorAll(".gallery-window").forEach(windowEl=>{
+  windowEl.addEventListener("touchstart",()=>windowEl.classList.add("paused"),{passive:true});
+  windowEl.addEventListener("touchend",()=>{
+    setTimeout(()=>windowEl.classList.remove("paused"),1800);
+  },{passive:true});
+  windowEl.addEventListener("mouseenter",()=>windowEl.classList.add("paused"));
+  windowEl.addEventListener("mouseleave",()=>windowEl.classList.remove("paused"));
+});
+
+/* Video previews and full video player */
+const videoTrack=document.getElementById("videoGallery");
+
+workVideos.forEach((src,index)=>{
+  const card=document.createElement("div");
+  card.className="video-card";
+  card.setAttribute("role","button");
+  card.setAttribute("tabindex","0");
+  card.setAttribute("aria-label","تشغيل فيديو التجهيزات");
+
+  const video=document.createElement("video");
+  video.src=src;
+  video.muted=true;
+  video.loop=true;
+  video.autoplay=true;
+  video.playsInline=true;
+  video.setAttribute("playsinline","");
+  video.setAttribute("webkit-playsinline","");
+  video.preload="metadata";
+
+  const playMark=document.createElement("div");
+  playMark.className="play-mark";
+  playMark.textContent="▶";
+
+  const label=document.createElement("span");
+  label.className="video-label";
+  label.textContent="فيديو تجهيزات "+(index+1);
+
+  card.append(video,playMark,label);
+  card.addEventListener("click",()=>openVideoLightbox(src));
+  card.addEventListener("keydown",e=>{
+    if(e.key==="Enter" || e.key===" "){
+      e.preventDefault();
+      openVideoLightbox(src);
+    }
+  });
+  videoTrack.appendChild(card);
+});
+
+/* Perfume cards */
+const perfumeGrid=document.getElementById("perfumeGrid");
+perfumes.forEach(item=>{
+  const card=document.createElement("article");
+  card.className="product-card";
+  const img=document.createElement("img");
+  img.src=item.image;
+  img.alt=item.name;
+  img.loading="lazy";
+
+  const info=document.createElement("div");
+  info.className="product-info";
+
+  const heading=document.createElement("h3");
+  heading.textContent=item.name;
+
+  const description=document.createElement("p");
+  description.textContent=item.desc;
+
+  const link=document.createElement("a");
+  link.className="btn btn-outline";
+  link.href=WHATSAPP+"?text="+encodeURIComponent("أهلاً، عايز أستفسر عن عطر "+item.name);
+  link.target="_blank";
+  link.rel="noopener";
+  link.textContent="استفسر عن العطر";
+
+  info.append(heading,description,link);
+  card.append(img,info);
+  perfumeGrid.appendChild(card);
+});
+
+/* Intro */
+function enterSite(){
+  document.getElementById("intro").classList.add("done");
+  try{sessionStorage.setItem("bahgaIntroSeen","yes")}catch(e){}
+}
+
+window.addEventListener("load",()=>{
+  document.getElementById("loader").classList.add("hide");
+  try{
+    if(sessionStorage.getItem("bahgaIntroSeen")==="yes"){
+      document.getElementById("intro").classList.add("done");
+    }
+  }catch(e){}
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* Navigation */
+function cardKey(event,id){
+  if(event.key==="Enter" || event.key===" "){
+    event.preventDefault();
+    openPanel(id);
+  }
+}
+
+function openPanel(id){
+  const panel=document.getElementById(id);
+  if(!panel)return;
+
+  const panelView=document.getElementById("panelView");
+  document.getElementById("homeView").style.display="none";
+  panelView.classList.add("active");
+
+  document.querySelectorAll("#panelView > section").forEach(section=>{
+    section.classList.remove("active");
+  });
+  panel.classList.add("active");
+
+  panelView.classList.remove("bg-kosha","bg-perfumes","bg-gifts","bg-accessories");
+  panelView.classList.add("bg-"+id);
+
+  document.getElementById("navLinks").classList.remove("open");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showHome(){
+  const panelView=document.getElementById("panelView");
+  panelView.classList.remove("active","bg-kosha","bg-perfumes","bg-gifts","bg-accessories");
+
+  document.querySelectorAll("#panelView > section").forEach(section=>{
+    section.classList.remove("active");
+  });
+
+  document.getElementById("homeView").style.display="block";
+  document.getElementById("navLinks").classList.remove("open");
+}
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("open");
+}
+
+/* Surprise */
+function openSurprise(){
+  document.getElementById("giftEmoji").textContent="🎉";
+  document.getElementById("surpriseMessage").classList.add("show");
+}
+
+/* Image lightbox */
+function openLightbox(src){
+  document.getElementById("lightboxImage").src=src;
+  document.getElementById("lightbox").classList.add("show");
+}
+function closeLightbox(){
+  document.getElementById("lightbox").classList.remove("show");
+  document.getElementById("lightboxImage").src="";
+}
+
+/* Video lightbox */
+function openVideoLightbox(src){
+  const box=document.getElementById("videoLightbox");
+  const video=document.getElementById("bigVideo");
+  video.src=src;
+  box.classList.add("show");
+  video.load();
+  const playPromise=video.play();
+  if(playPromise && playPromise.catch)playPromise.catch(()=>{});
+}
+function closeVideoLightbox(){
+  const box=document.getElementById("videoLightbox");
+  const video=document.getElementById("bigVideo");
+  video.pause();
+  video.removeAttribute("src");
+  video.load();
+  box.classList.remove("show");
+}
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    closeLightbox();
+    closeVideoLightbox();
+  }
+});
+
+/* Occasion chooser */
+let selectedOccasion="";
+const occasionData={
+  wedding:{text:"ممكن تبدأ من قسم الكوش والأفراح وتشوف التجهيزات.",panel:"kosha"},
+  birthday:{text:"شوف أفكار الهدايا والبوكسات المناسبة للمناسبة.",panel:"gifts"},
+  gift:{text:"قسم الهدايا والبوكسات فيه أفكار تلهمك.",panel:"gifts"},
+  personal:{text:"تقدر تستكشف البرفانات والإكسسوارات.",panel:"perfumes"}
+};
+
+function chooseOccasion(button,type){
+  document.querySelectorAll(".occasion-options button").forEach(b=>b.classList.remove("selected"));
+  button.classList.add("selected");
+  selectedOccasion=type;
+  document.getElementById("occasionResult").textContent=occasionData[type].text;
+  document.getElementById("occasionGo").style.display="inline-flex";
+}
+function goOccasion(){
+  if(selectedOccasion)openPanel(occasionData[selectedOccasion].panel);
+}
+
+/* Tour */
+const tourSteps=[
+  {title:"أهلاً بيك في صانع البهجة",text:"هنا بنشاركك أفكار وتفاصيل تساعدك في مناسباتك الجميلة.",panel:null},
+  {title:"الكوش والأفراح 💍",text:"شوف صور وفيديوهات من تجهيزات الكوش والأفراح.",panel:"kosha"},
+  {title:"الهدايا والبوكسات 🎁",text:"اكتشف أفكار الهدايا والتغليف.",panel:"gifts"},
+  {title:"البرفانات 🌹",text:"اتعرف على أسماء متنوعة في عالم العطور.",panel:"perfumes"},
+  {title:"الإكسسوارات 💎",text:"استكشف صور الإكسسوارات واللمسات الأنيقة.",panel:"accessories"},
+  {title:"وصلنا للتواصل ❤️",text:"تقدر تتواصل مع المحل مباشرة على واتساب.",panel:"contact"}
+];
+let tourIndex=-1;
+
+function nextTour(){
+  tourIndex++;
+  if(tourIndex>=tourSteps.length){endTour();return}
+
+  const step=tourSteps[tourIndex];
+  document.getElementById("tourStep").textContent=`الخطوة ${tourIndex+1} من ${tourSteps.length}`;
+  document.getElementById("tourTitle").textContent=step.title;
+  document.getElementById("tourText").textContent=step.text;
+
+  const nextButton=document.getElementById("tourNext");
+  nextButton.textContent=tourIndex===tourSteps.length-1?"إنهاء الجولة":"التالي ←";
+
+  nextButton.onclick=()=>{
+    if(step.panel==="contact"){
+      endTour();
+      document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+    }else if(step.panel){
+      openPanel(step.panel);
+      nextButton.onclick=nextTour;
+    }else{
+      nextTour();
+    }
+  };
+}
+
+function endTour(){
+  tourIndex=-1;
+  document.getElementById("tourStep").textContent="جولة تعريفية";
+  document.getElementById("tourTitle").textContent="شكرًا إنك خدت لفة معانا ❤️";
+  document.getElementById("tourText").textContent="نتمنى تكون استمتعت بالتعرف على صانع البهجة.";
+  document.getElementById("tourNext").textContent="ابدأ الجولة من جديد";
+  document.getElementById("tourNext").onclick=nextTour;
+  showHome();
+}
+
+/* Share shop location */
+async function shareLocation(){
+  const shareData={
+    title:"موقع صانع البهجة",
+    text:"ده موقع صانع البهجة على خرائط Google 📍",
+    url:MAP_LINK
+  };
+  try{
+    if(navigator.share){
+      await navigator.share(shareData);
+    }else if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(MAP_LINK);
+      alert("تم نسخ رابط موقع المحل. تقدر تبعته لأي حد.");
+    }else{
+      window.prompt("انسخ رابط موقع المحل:",MAP_LINK);
+    }
+  }catch(error){
+    if(error.name!=="AbortError"){
+      window.prompt("انسخ رابط موقع المحل:",MAP_LINK);
+    }
+  }
+}
+
+/* Greeting card maker */
+let currentGreeting="";
+
+function makeGreetingCard(){
+  const name=document.getElementById("cardName").value.trim();
+  const occasion=document.getElementById("cardOccasion").value;
+
+  if(!name){
+    alert("اكتب اسم الشخص الأول ❤️");
+    document.getElementById("cardName").focus();
+    return;
+  }
+
+  const messages={
+    "عيد ميلاد سعيد":`كل سنة وأنت طيب يا ${name} ❤️، يا رب تكون سنة مليانة فرحة ونجاح وأيام جميلة.`,
+    "ألف مبروك الخطوبة":`ألف مبروك يا ${name} 💍، ربنا يتمم فرحتك على خير ويجعل أيامك كلها سعادة.`,
+    "ألف مبروك الزواج":`ألف مبروك يا ${name} 💐، ربنا يجعل حياتك مليانة مودة ورحمة وفرحة.`,
+    "كل سنة وأنت طيب":`كل سنة وأنت طيب يا ${name} 🌙، ربنا يجعل أيامك كلها خير وبركة وبهجة.`,
+    "هدية من القلب":`يا ${name}، الهدية دي رسالة صغيرة بتقول إنك شخص غالي وتستاهل كل حاجة حلوة 🎁.`
+  };
+
+  const emojis={
+    "عيد ميلاد سعيد":"🎂",
+    "ألف مبروك الخطوبة":"💍",
+    "ألف مبروك الزواج":"💐",
+    "كل سنة وأنت طيب":"🌙",
+    "هدية من القلب":"🎁"
+  };
+
+  currentGreeting=occasion+"\n"+messages[occasion]+"\nمن صانع البهجة ❤️";
+  document.getElementById("cardEmoji").textContent=emojis[occasion];
+  document.getElementById("cardTitle").textContent=occasion;
+  document.getElementById("cardMessage").textContent=messages[occasion];
+  document.getElementById("generatedCard").classList.add("show");
+  document.getElementById("cardActions").style.display="flex";
+}
+
+async function copyGreetingCard(){
+  if(!currentGreeting)return;
+  try{
+    await navigator.clipboard.writeText(currentGreeting);
+    alert("تم نسخ التهنئة ❤️");
+  }catch(e){
+    window.prompt("انسخ التهنئة:",currentGreeting);
+  }
+}
+
+async function shareGreetingCard(){
+  if(!currentGreeting)return;
+  try{
+    if(navigator.share){
+      await navigator.share({title:"كارت من صانع البهجة",text:currentGreeting});
+    }else{
+      await copyGreetingCard();
+    }
+  }catch(e){
+    if(e.name!=="AbortError")await copyGreetingCard();
+  }
+}
+
+/* Back to top */
+const topBtn=document.getElementById("topBtn");
+window.addEventListener("scroll",()=>{
+  topBtn.style.display=window.scrollY>450?"block":"none";
+},{passive:true});
+
+/* Reveal animations */
+if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.10});
+
+  document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+}else{
+  document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
+}
+
+/* ===================================================
+   QURAN PLAYER
+   Mishary Rashid Alafasy
+   Starts from Surah 53, Ayah 39
+   Double audio buffering for next ayah
+=================================================== */
+
+const quranBase="https://everyayah.com/data/Alafasy_128kbps/";
+const surahAyahCounts=[
+  0,
+  7,286,200,176,120,165,206,75,129,109,
+  123,111,43,52,99,128,111,110,98,135,
+  112,78,118,64,77,227,93,88,69,60,
+  34,30,73,54,45,83,182,88,75,85,
+  54,53,89,59,37,35,38,29,18,45,
+  60,49,62,55,78,96,29,22,24,13,
+  14,11,11,18,12,12,30,52,52,44,
+  28,28,20,56,40,31,50,40,46,42,
+  29,19,36,25,22,17,19,26,30,20,
+  15,21,11,8,8,19,5,8,8,11,
+  11,8,3,9,5,4,7,3,6,3,
+  5,4,5,6
+];
+
+let quranSurah=53;
+let quranAyah=39;
+let activeAudioIndex=0;
+let quranPlaying=false;
+let quranPreparing=false;
+let quranStarted=false;
+let quranGeneration=0;
+
+const quranAudios=[
+  document.getElementById("quranAudioA"),
+  document.getElementById("quranAudioB")
+];
+
+const quranPlayButton=document.getElementById("quranPlay");
+const quranStatus=document.getElementById("quranStatus");
+const quranProgress=document.getElementById("quranProgressFill");
+
+function quranFileName(surah,ayah){
+  return String(surah).padStart(3,"0")+String(ayah).padStart(3,"0")+".mp3";
+}
+
+function quranUrl(surah,ayah){
+  return quranBase+quranFileName(surah,ayah);
+}
+
+function getNextAyah(surah,ayah){
+  const max=surahAyahCounts[surah];
+  if(ayah<max){
+    return {surah:surah,ayah:ayah+1};
+  }
+  if(surah<114){
+    return {surah:surah+1,ayah:1};
+  }
+  return null;
+}
+
+function updateQuranStatus(message){
+  quranStatus.textContent=message;
+}
+
+function updateQuranProgress(){
+  const total=surahAyahCounts.reduce((sum,count)=>sum+count,0);
+  let completed=0;
+
+  for(let i=1;i<quranSurah;i++){
+    completed+=surahAyahCounts[i]||0;
+  }
+  completed+=quranAyah-1;
+
+  const startOffset=surahAyahCounts.slice(1,53).reduce((a,b)=>a+b,0)+38;
+  const remainingTotal=total-startOffset;
+  const currentProgress=Math.max(0,completed-startOffset);
+
+  const percent=remainingTotal>0
+    ? Math.min(100,(currentProgress/remainingTotal)*100)
+    : 0;
+
+  quranProgress.style.width=percent+"%";
+}
+
+function prepareAudio(audio,surah,ayah){
+  return new Promise(resolve=>{
+    if(!audio)return resolve(false);
+
+    audio.pause();
+    audio.oncanplaythrough=null;
+    audio.onerror=null;
+    audio.onloadeddata=null;
+
+    let finished=false;
+    const done=value=>{
+      if(finished)return;
+      finished=true;
+      audio.oncanplaythrough=null;
+      audio.onerror=null;
+      audio.onloadeddata=null;
+      resolve(value);
+    };
+
+    audio.preload="auto";
+    audio.src=quranUrl(surah,ayah);
+    audio.load();
+
+    if(audio.readyState>=3){
+      done(true);
+      return;
+    }
+
+    audio.oncanplaythrough=()=>done(true);
+    audio.onloadeddata=()=>{
+      if(audio.readyState>=3)done(true);
+    };
+    audio.onerror=()=>done(false);
+
+    /* Don't wait forever for a browser that doesn't fire canplaythrough */
+    setTimeout(()=>{
+      if(audio.readyState>=2)done(true);
+      else if(audio.error)done(false);
+    },12000);
+  });
+}
+
+async function preloadNextAyah(){
+  const next=getNextAyah(quranSurah,quranAyah);
+  if(!next)return;
+
+  const nextIndex=1-activeAudioIndex;
+  const nextAudio=quranAudios[nextIndex];
+
+  quranPreparing=true;
+  await prepareAudio(nextAudio,next.surah,next.ayah);
+  quranPreparing=false;
+}
+
+async function startCurrentAyah(){
+  if(!quranPlaying)return;
+
+  const generation=quranGeneration;
+  const audio=quranAudios[activeAudioIndex];
+
+  updateQuranStatus("جاري تجهيز الآية...");
+  quranPlayButton.textContent="⏸ إيقاف مؤقت";
+
+  const ready=await prepareAudio(audio,quranSurah,quranAyah);
+
+  if(generation!==quranGeneration || !quranPlaying)return;
+
+  if(!ready){
+    updateQuranStatus("تعذر تحميل الآية – حاول تاني");
+    quranPlayButton.textContent="▶ إعادة المحاولة";
+    quranPlaying=false;
+    return;
+  }
+
+  audio.onended=handleAyahEnded;
+  audio.onerror=()=>{
+    updateQuranStatus("مشكلة في تحميل الصوت");
+    quranPlaying=false;
+    quranPlayButton.textContent="▶ إعادة المحاولة";
+  };
+
+  try{
+    await audio.play();
+    updateQuranStatus("سورة "+quranSurah+" – آية "+quranAyah);
+    quranStarted=true;
+    quranPlayButton.textContent="⏸ إيقاف مؤقت";
+
+    /* Load the following ayah in the other audio element */
+    const next=getNextAyah(quranSurah,quranAyah);
+    if(next){
+      const nextAudio=quranAudios[1-activeAudioIndex];
+      prepareAudio(nextAudio,next.surah,next.ayah);
+    }
+  }catch(error){
+    updateQuranStatus("اضغط تشغيل للسماح بالصوت");
+    quranPlaying=false;
+    quranPlayButton.textContent="▶ تشغيل";
+  }
+}
+
+async function handleAyahEnded(){
+  if(!quranPlaying)return;
+
+  const next=getNextAyah(quranSurah,quranAyah);
+
+  if(!next){
+    quranPlaying=false;
+    quranPlayButton.textContent="▶ تشغيل من البداية";
+    updateQuranStatus("تمت الختمة ❤️");
+    return;
+  }
+
+  quranSurah=next.surah;
+  quranAyah=next.ayah;
+  activeAudioIndex=1-activeAudioIndex;
+  updateQuranProgress();
+
+  const nextAudio=quranAudios[activeAudioIndex];
+
+  /* The next ayah was prepared in the background */
+  if(nextAudio.readyState>=2){
+    nextAudio.onended=handleAyahEnded;
+    try{
+      await nextAudio.play();
+      updateQuranStatus("سورة "+quranSurah+" – آية "+quranAyah);
+      quranPlayButton.textContent="⏸ إيقاف مؤقت";
+
+      const following=getNextAyah(quranSurah,quranAyah);
+      if(following){
+        prepareAudio(quranAudios[1-activeAudioIndex],following.surah,following.ayah);
+      }
+      return;
+    }catch(e){}
+  }
+
+  /* If the browser did not finish preloading, wait for the current ayah file */
+  updateQuranStatus("تحميل الآية التالية...");
+  const generation=quranGeneration;
+  const ready=await prepareAudio(nextAudio,quranSurah,quranAyah);
+
+  if(generation!==quranGeneration || !quranPlaying)return;
+
+  if(ready){
+    nextAudio.onended=handleAyahEnded;
+    try{
+      await nextAudio.play();
+      updateQuranStatus("سورة "+quranSurah+" – آية "+quranAyah);
+      const following=getNextAyah(quranSurah,quranAyah);
+      if(following){
+        prepareAudio(quranAudios[1-activeAudioIndex],following.surah,following.ayah);
+      }
+    }catch(e){
+      quranPlaying=false;
+      quranPlayButton.textContent="▶ تشغيل";
+      updateQuranStatus("اضغط تشغيل للمتابعة");
+    }
+  }else{
+    quranPlaying=false;
+    quranPlayButton.textContent="▶ إعادة المحاولة";
+    updateQuranStatus("تعذر تحميل الآية التالية");
+  }
+}
+
+async function toggleQuran(){
+  const currentAudio=quranAudios[activeAudioIndex];
+
+  if(quranPlaying){
+    quranPlaying=false;
+    currentAudio.pause();
+    quranPlayButton.textContent="▶ متابعة";
+    updateQuranStatus("متوقف مؤقتًا");
+    return;
+  }
+
+  quranPlaying=true;
+  quranGeneration++;
+
+  if(quranStarted && currentAudio.src && currentAudio.readyState>=2){
+    try{
+      await currentAudio.play();
+      currentAudio.onended=handleAyahEnded;
+      quranPlayButton.textContent="⏸ إيقاف مؤقت";
+      updateQuranStatus("سورة "+quranSurah+" – آية "+quranAyah);
+      return;
+    }catch(e){}
+  }
+
+  startCurrentAyah();
+}
+
+function stopQuran(){
+  quranPlaying=false;
+  quranGeneration++;
+
+  quranAudios.forEach(audio=>{
+    audio.pause();
+    audio.currentTime=0;
+    audio.removeAttribute("src");
+    audio.load();
+  });
+
+  quranSurah=53;
+  quranAyah=39;
+  activeAudioIndex=0;
+  quranStarted=false;
+
+  quranPlayButton.textContent="▶ تشغيل";
+  updateQuranStatus("جاهز من سورة النجم: 39");
+  quranProgress.style.width="0%";
+}
+
+/* Initial status */
+updateQuranProgress();
+updateQuranStatus("جاهز للاستماع");
+</script>
+
+</body>
+</html>
